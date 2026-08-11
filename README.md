@@ -13,8 +13,8 @@ Do small OR ensembles of technical indicators, selected with an IS/OOS Sharpe fi
 ## What data are you using?
 
 - **Data source:** Yahoo Finance via `yfinance`
-- **Assets:** BTC-USD, ETH-USD, TQQQ, UPRO, SMH.L, UCO, AAPL, GOOG, GLD, QQQ, SPY
-- **Time period:** 2018-01-01 through the latest available daily bar at download time (currently through 2026-08-10 in the saved run)
+- **Assets:** BTC-USD, ETH-USD, TQQQ, UPRO, SMH.L, NFLX, AAPL, GOOG, GLD, QQQ, SPY
+- **Time period:** 2018-01-01 through the latest available daily bar at download time (currently through 2026-08-11 in the saved run)
 - **Frequency:** Daily (`interval="1d"`); Sharpe annualization uses 252 trading days for stocks/ETFs and 365 for crypto calendars
 - **Preprocessing:** Drop infinite/missing closes; sort by date; deduplicate timestamps; chronological 60/40 train/validation split per ticker (`TRAIN_RATIO = 0.60`); indicators from TA-Lib plus custom implementations (KAMA, SuperTrend, Kalman, ALMA, STC, etc.); entry/exit signals lagged one bar (`shift_signals=True`) to reduce same-bar look-ahead
 - **Dividends:** Equity/ETF closes from yfinance are used as returned `Close` series (default auto-adjust behavior), so dividend effects are reflected in the adjusted price path rather than modeled as separate cash distributions
@@ -33,9 +33,8 @@ Do small OR ensembles of technical indicators, selected with an IS/OOS Sharpe fi
 
 Please focus your review on:
 
-1. **IS/OOS integrity** — whether parameter selection, ensemble ranking, and Boruta scoring leak validation information into training decisions
-2. **Look-ahead bias** — whether the one-bar signal shift is applied consistently, and whether indicator construction uses only information available at decision time
-3. **Boruta validation design** — whether the shadow-signal / return-shuffle procedure actually tests indicator contribution versus overfitting noise
-4. **OR-ensemble construction** — whether logical OR of entries/exits is a fair combination rule, and how fees/slippage interact with higher trade frequency
+1. **Indicator parameter sweeps** — Review one of the indicator sweep notebooks inside the 'Indicator_sweeps' folder and review the full notebook. All of the notebooks present inside the folder are the same notebook, except each one got a different asset.
+2. **Multi-Asset Boruta Ensemble** — Review the full Multi-Asset Boruta Ensemble notebook.
+
 
 
