@@ -24,7 +24,7 @@ Do small OR ensembles of technical indicators, selected with an IS/OOS Sharpe fi
 
 - **`Multi-Asset Boruta Ensemble.ipynb`:** Primary multi-asset Boruta ensemble backtesting notebook; loads saved sweep results and builds OR ensembles across the ticker universe
 - **`Indicator_sweeps/`:** Per-asset notebooks that sweep indicator parameter grids for a single ticker
-- **`Indicator_sweep_results/`:** Top indicator results for each given asset (`{ticker_slug}_indicator_sweep_results.csv`); consumed as inputs by the multi-asset ensemble notebook
+- **`Indicator_sweep_results/`:** Top indicator results for each given asset (`{ticker_slug}_indicator_sweep_results.json`); consumed as inputs by the multi-asset ensemble notebook
 - **`Single_Asset_Ensembles/`:** Single-ticker Boruta ensemble notebooks (for example SPY and BTC-USD)
 - **`README.md`:** Project overview, research framing, and folder/file map
 - **`.gitignore`:** Ignore rules for virtual environments, Jupyter checkpoints, secrets, and local scratch notebooks
