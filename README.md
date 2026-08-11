@@ -20,6 +20,15 @@ Do small OR ensembles of technical indicators, selected with an IS/OOS Sharpe fi
 - **Dividends:** Equity/ETF closes from yfinance are used as returned `Close` series (default auto-adjust behavior), so dividend effects are reflected in the adjusted price path rather than modeled as separate cash distributions
 - **Price adjustment:** Split- and dividend-adjusted closes (yfinance default); no additional custom adjustment layer is applied in the notebook
 
+## What are the folders and files?
+
+- **`Multi-Asset Boruta Ensemble.ipynb`:** Primary multi-asset Boruta ensemble backtesting notebook; loads saved sweep results and builds OR ensembles across the ticker universe
+- **`Indicator_sweeps/`:** Per-asset notebooks that sweep indicator parameter grids for a single ticker
+- **`Indicator_sweep_results/`:** Top indicator results for each given asset (`{ticker_slug}_indicator_sweep_results.csv`); consumed as inputs by the multi-asset ensemble notebook
+- **`Single_Asset_Ensembles/`:** Single-ticker Boruta ensemble notebooks (for example SPY and BTC-USD)
+- **`README.md`:** Project overview, research framing, and folder/file map
+- **`.gitignore`:** Ignore rules for virtual environments, Jupyter checkpoints, secrets, and local scratch notebooks
+
 ## What should I look at?
 
 Please focus your review on:
@@ -29,5 +38,4 @@ Please focus your review on:
 3. **Boruta validation design** — whether the shadow-signal / return-shuffle procedure actually tests indicator contribution versus overfitting noise
 4. **OR-ensemble construction** — whether logical OR of entries/exits is a fair combination rule, and how fees/slippage interact with higher trade frequency
 
-Primary notebook: `Multi-Asset Boruta Ensemble.ipynb`  
-Supporting inputs: `Indicator_sweep_results/{ticker}_indicator_sweep_results.csv`
+
