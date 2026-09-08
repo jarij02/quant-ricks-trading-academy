@@ -42,16 +42,23 @@ Run `RAAM.ipynb` top to bottom.
 
 ## What should I look at?
 
-Open `RAAM.ipynb` and confirm:
+Open `RAAM.ipynb` and check two things: (1) is the code doing what the comments say, and (2) are the iffy design calls actually wrong?
+
+**Implementation**
 
 - Ensembles are rebuilt from the JSON (`members` + `param_display`, OR combine, `shift_signals=True`), not re-searched.
-- Files are inner-joined on Date; ranking and allocation share that index.
-- RSI is on cumulative BnH returns; exclude below 50; rank 1 = strongest.
-- Weights use **yesterday’s** rank and position; dual eligibility; leftover to GLD or cash; non-haven cap 25%.
-- Portfolio return is weight × **BnH**, not Strategy.
-- Net returns subtract turnover commissions; static benchmarks are in-sample (optimistic), not walk-forward.
+- Ranking and allocation share the inner-joined Date index.
+- RSI is on cumulative BnH wealth, not price; RSI below 50 → rank 0; rank 1 = strongest.
+- Weights use **yesterday’s** rank and position. Dual eligibility: rank in 1–4 **and** position == 1. Leftover to GLD or cash. Non-haven cap 25%. Day 0 is cash.
+- Portfolio return is weight × **BnH**, not Strategy. Watch for look-ahead and the wrong return series.
 
-Watch for look-ahead, the wrong return series, and GLD leftover using `rank > 0` (RSI-eligible) rather than top-4.
+**Please judge these (they may be wrong)**
+
+- **Crypto weekends are dropped.** Files are inner-joined on Date, so BTC Saturday/Sunday bars disappear whenever equities have no print. Weekend crypto P&L is not folded into Friday–Monday. Is that the right mixed-calendar treatment, or does it understate BTC risk/return?
+- **PSR / DSR.** Metrics use Bailey–López de Prado PSR (`P(true Sharpe > 0)`) and DSR with `N_TRIALS = 100000`. That N is a stress test against 100k zero-skill trials of this sample length — **not** a count of RAAM configs run in the notebook (there is one). Is the formula implemented correctly, and is that N an honest multiple-testing adjustment or an overstated hurdle?
+- **Two cost layers.** Vectorbt fees/slippage (5 bp + 5 bp) shape the ensemble `Position` / Strategy path. RAAM then charges 10 bp per side on portfolio `sum(|Δw|)`. Is that double-counting, or correctly applying costs to two different series?
+- **GLD leftover uses `rank > 0`**, not top-4. Gold can fill leftover slots whenever it is RSI-eligible and long its ensemble. Intentional safe-haven rule, or a loophole?
+- **Static max-Sharpe / max-Omega see the whole sample.** They are an in-sample ceiling, not walk-forward. Sharpe annualization is 252 on the joined (mostly weekday) calendar even though BTC is in the book.
 
 ## How do I run it?
 
