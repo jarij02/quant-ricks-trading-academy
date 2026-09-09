@@ -29,7 +29,7 @@ Run `RAAM.ipynb` top to bottom.
 ## What data are you using?
 
 - Yahoo Finance daily closes from 2018-01-01 (split/dividend-adjusted default).
-- After the inner join the saved run is 2020-12-01 to 2026-09-08 (1390 days). Crypto weekends and non-overlapping holidays are dropped.
+- After the inner join the saved run is 2020-12-01 to 2026-09-04 (1389 days). Crypto weekends and non-overlapping holidays are dropped.
 - Portfolio Sharpe uses 252 days. Commissions on the RAAM book are 0.10% per side on `sum(|Δw|)`.
 
 ## What are the folders and files?
