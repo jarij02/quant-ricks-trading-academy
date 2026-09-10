@@ -10,7 +10,7 @@ The per-ticker OR ensembles are **not** chosen here. They come from `Multi-Asset
 
 RAAM ranks a mixed asset universe each day and holds up to four names. A name can be held only if it is both RSI-strong and currently long its frozen indicator ensemble. Leftover weight goes to gold (GLD) when GLD is eligible, otherwise cash.
 
-Universe: `BTC-USD`, `TQQQ`, `UPRO`, `SMH.L`, `QTUM`, `GLD`, `MGK`, `^STOXX50E`.
+Universe: `BTC-USD`, `TQQQ`, `UPRO`, `SMH.L`, `QTUM`, `GLD`, `^STOXX50E`.
 
 ## What is the research question?
 
@@ -28,8 +28,8 @@ Run `RAAM.ipynb` top to bottom.
 
 ## What data are you using?
 
-- Yahoo Finance daily closes from 2018-01-01 (split/dividend-adjusted default).
-- After the inner join the saved run is 2020-12-01 to 2026-09-04 (1389 days). Crypto weekends and non-overlapping holidays are dropped.
+- Yahoo Finance daily closes from 2021-01-01 (split/dividend-adjusted default).
+- After the inner join the saved run is 2021-01-04 to 2026-09-08 (1371 days). Crypto weekends and non-overlapping holidays are dropped.
 - Portfolio Sharpe uses 252 days. Commissions on the RAAM book are 0.10% per side on `sum(|Δw|)`.
 
 ## What are the folders and files?
