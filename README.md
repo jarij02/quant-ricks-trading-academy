@@ -2,7 +2,7 @@
 
 **Please review `RAAM.ipynb`.** That notebook is the deliverable. Check that the pipeline below is implemented correctly. This README is only a short map.
 
-The per-ticker OR ensembles are **not** chosen here. They come from `Multi-Asset Boruta Ensemble.ipynb` and are saved in `Ensemble_results/master_leaderboard_ensembles.json`. RAAM loads that file and allocates across those assets.
+The per-ticker OR ensembles are **not** chosen here. They are frozen in `Ensemble_results/master_leaderboard_ensembles.json`. RAAM loads that file and allocates across those assets.
 
 ---
 
@@ -37,8 +37,6 @@ Run `RAAM.ipynb` top to bottom.
 - **`RAAM.ipynb`** — review this.
 - **`RAAM_data/`** — per-ticker CSVs written by RAAM.
 - **`Ensemble_results/master_leaderboard_ensembles.json`** — frozen ensembles (input).
-- **`Multi-Asset Boruta Ensemble.ipynb`** — where that JSON is built (not the RAAM review).
-- **`Indicator_sweeps/`** and **`Indicator_sweep_results/`** — used by the ensemble notebook, not by RAAM.
 
 ## What should I look at?
 

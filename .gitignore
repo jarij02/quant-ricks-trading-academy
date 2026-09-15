@@ -29,3 +29,9 @@ credentials.json
 
 # Local duplicate / scratch notebooks
 Multi-Asset Boruta Ensemble copy.ipynb
+
+# Ensemble pipeline (local only; RAAM loads the frozen JSON)
+Multi-Asset Boruta Ensemble.ipynb
+Indicator_sweeps/
+Indicator_sweep_results/
+Pinescript/
